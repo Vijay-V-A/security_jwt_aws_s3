@@ -1,15 +1,22 @@
+server:
+  port: 9080
 spring:
-   application:
-        name: security_jwt_aws_s3
-   datasource:
+  application:
+    name: security_jwt_aws_s3
+  datasource:
     url: jdbc:mysql://localhost:3306/spring_security_aws_s3
     username: root
-    password: vijay123
+    # password: vijay123
     driver-class-name: com.mysql.cj.jdbc.Driver
-   jpa:
-     hibernate:
-      ddl-auto: update  
-     show-sql: true  
-     properties:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect 
+        dialect: org.hibernate.dialect.MySQLDialect
+security:
+  token:
+    key: d62946c3397618f2bd39925172ee8a4d8659fd375bb025f187f66172620f2881
+    expiry-time: 3600000
+    referesh-time: 5400000
