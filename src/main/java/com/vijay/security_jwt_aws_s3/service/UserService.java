@@ -54,7 +54,7 @@ public class UserService implements UserDetailsService {
      public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
           User user = userRepo.findByUserName(userName);
 
-          if (user.getId() == null)
+          if (user == null || user.getId() == null)
                throw new UsernameNotFoundException("User not found");
 
           return user;

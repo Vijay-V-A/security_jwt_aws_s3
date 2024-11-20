@@ -1,6 +1,8 @@
 package com.vijay.security_jwt_aws_s3.config;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -31,6 +33,15 @@ public class JWTFilter extends OncePerRequestFilter {
                @NonNull HttpServletResponse response,
                @NonNull FilterChain filterChain)
                throws ServletException, IOException {
+
+          List<String> excludedEndpoints = Arrays.asList(
+                    "/api/v1/session/signUp",
+                    "/api/v1/session/signIn");
+
+          if (excludedEndpoints.contains(request.getRequestURI())) {
+               filterChain.doFilter(request, response);
+               return;
+          }
 
           String authHeader = request.getHeader("Authorization");
           String token = "";

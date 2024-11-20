@@ -34,7 +34,7 @@ public class UserController {
      }
 
      @GetMapping("user/{id}")
-     public ResponseEntity<User> getOneUser(@RequestParam String id) {
+     public ResponseEntity<User> getOneUser(@PathVariable String id) {
           return new ResponseEntity<>(userService.getOneUser(id), HttpStatus.OK);
      }
 
