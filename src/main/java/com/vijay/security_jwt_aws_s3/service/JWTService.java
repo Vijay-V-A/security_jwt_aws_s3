@@ -53,8 +53,9 @@ public class JWTService {
      public InnerTokenResponse buildToken(UserDetails user, Integer expiryTime) {
 
           Map<String, Object> claims = new HashMap<>();
-          Date tokenExpiryTime = new Date(System.currentTimeMillis() + expiryTime);
           Date issueTime = new Date(System.currentTimeMillis());
+          Date tokenExpiryTime = new Date(System.currentTimeMillis() + expiryTime);
+         
 
           String token = Jwts.builder()
                     .claims()

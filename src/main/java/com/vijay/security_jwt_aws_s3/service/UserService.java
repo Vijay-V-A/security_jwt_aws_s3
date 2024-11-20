@@ -19,7 +19,7 @@ public class UserService implements UserDetailsService {
      @Autowired
      private UserRepo userRepo;
 
-     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(12);
+     private BCryptPasswordEncoder passwordEncoder;
 
      public List<User> getAllUser() {
           return userRepo.findAll();
